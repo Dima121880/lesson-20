@@ -5,14 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/css/style.css" />
     <script src="src/js/main.js"></script>
-    <title>lesson-20></title>
+
+    <title>lesson-20</title>
   </head>
 
-  <body>
-    <h2>JavaScript Clock</h2>
+  <body onload="startTime()">
+    <h1>Clock</h1>
+    <div id="txt" class="txt"></div>
 
-    <div id="txt"></div>
-
-    <p id="demo" class="Clock"></p>
+    <section class="slider-section" id="slid-conteiner">
+      <div class="slides-wrapper">
+        <button id="prev" class="prev">prev</button>
+        <button id="next" class="next">next</button>
+        <div class="slid-conteiner">
+          <div class="slide">
+            <img src="src/img/th (1).jpg" alt="" />
+          </div>
+          <div class="slide">
+            <img src="src/img/th.jpg" alt="" />
+          </div>
+          <div class="slide">
+            <img src="src/img/th (2).jpg" alt="" />
+          </div>
+          <div class="slide">
+            <img src="src/img/th (4).jpg" alt="" />
+          </div>
+          <div class="slide">
+            <img src="src/img/th (3).jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
