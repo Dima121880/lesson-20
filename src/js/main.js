@@ -33,121 +33,36 @@ function checkTime(i) {
 // }
 
 // davaleba-2
-const startIntervalBtn = document.querySelector("#start-interval");
-const stopIntervalBtn = document.querySelector("#stop-interval");
-const startTimeoutBtn = document.querySelector("#start-timeout");
-const stopTimeoutBtn = document.querySelector("#stop-timeout");
 
-const slide = document.querySelectorAll(".slide");
-const prevSlideBtn = document.querySelector("#prev");
-const nextSlideBtn = document.querySelector("#next");
-const syncJsFns = () => {
-  const logInfo = () => {
-    console.log("logInfo");
-  };
+let slideIndex = 1;
+showSlides(slideIndex);
 
-  function logInfoFn() {
-    console.log("logInfoFn");
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
+
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {
+    slideIndex = 1;
   }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
 
-  const syncFn = () => {
-    console.log("function start");
-    for (let i = 0; i < 1000; i++) {
-      console.log(i);
-    }
-    console.log("function end");
-  };
-
-  const asyncFn = () => {
-    console.log("async function start");
-
-    setTimeout(() => {
-      console.log("setTimeout");
-
-      // modal.classList.remove("active");
-    }, 2000);
-
-    console.log("async function after setTimeout");
-  };
-
-  // syncFn();
-  // asyncFn();
-
-  // setInterval(logInfo, 2000)
-  let intervalId = null,
-    timeoutId = null;
-
-  startIntervalBtn.addEventListener("click", () => {
-    intervalId = setInterval(logInfo, 2000);
-  });
-
-  stopIntervalBtn.addEventListener("click", () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-
-    console.log("clear interval");
-  });
-
-  startTimeoutBtn.addEventListener("click", () => {
-    timeoutId = setTimeout(logInfo, 5000);
-    console.log("timeoutId", timeoutId);
-  });
-
-  stopTimeoutBtn.addEventListener("click", () => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-      timeoutId = null;
-    }
-    console.log("clear timeout");
-  });
-};
-
-const slideFn = () => {
-  let currentSlide = 1;
-  // slides[currentSlide].classList.add("active");
-
-  const showSlides = () => {
-    slides.forEach((slide, index) => {
-      if (index === currentSlide) {
-        slide.classList.add("active");
-      } else {
-        slide.classList.remove("active");
-      }
-    });
-  };
-
-  const goToPrevSlide = () => {
-    if (currentSlide === 0) {
-      // prevSlideBtn.style.pointerEvents = "none";
-      // prevSlideBtn.disabled = true;
-      currentSlide = slides.length - 1;
-    } else {
-      // prevSlideBtn.style.pointerEvents = "initial";
-      // prevSlideBtn.disabled = false;
-      currentSlide--;
-    }
-
-    // console.log(currentSlide);
-    showSlides();
-  };
-
-  const goToNextSlide = () => {
-    if (currentSlide === slides.length - 1) {
-      // nextSlideBtn.style.pointerEvents = "none";
-      // nextSlideBtn.disabled = true;
-      currentSlide = 0;
-    } else {
-      currentSlide++;
-    }
-
-    // console.log(currentSlide);
-    showSlides();
-  };
-
-  // prevSlideBtn.addEventListener("click", goToPrevSlide);
-  nextSlideBtn.addEventListener("click", goToNextSlide);
-
-  showSlides();
-};
+// davaleba-3
