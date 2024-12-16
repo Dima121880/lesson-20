@@ -124,3 +124,8 @@ img {
     font-size: 11px;
   }
 }
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 5%;
+}
